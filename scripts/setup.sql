@@ -31,3 +31,14 @@ DELIMITER ',' CSV HEADER;
 SELECT travellers.name AS traveller, destinations.country AS destination
 FROM ((trips JOIN travellers ON trips.traveller_id = travellers.id)
 JOIN destinations ON trips.destination_id = destinations.id);
+
+SELECT COUNT(destinations.country) AS trips, travellers.name AS traveller
+FROM ((trips JOIN travellers ON trips.traveller_id = travellers.id)
+JOIN destinations ON trips.destination_id = destinations.id)
+GROUP BY travellers.name
+ORDER BY COUNT(destinations.country) ASC;
+
+SELECT travellers.name, destinations.country 
+FROM ((trips JOIN travellers ON trips.traveller_id = travellers.id)
+JOIN destinations ON trips.destination_id = destinations.id)
+WHERE name='Sharron';
